@@ -4,7 +4,7 @@ import useLocalStorage from "./local-storage";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const previousState = JSON.parse(window.localStorage.getItem("state") || {});
+const previousState = JSON.parse(window.localStorage.getItem("state") || '{}');
 const middleware = composeWithDevTools(
   applyMiddleware(useLocalStorage(), thunk)
 );
