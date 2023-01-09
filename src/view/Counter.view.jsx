@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../state/actions/count.actions";
+import { increment, decrement } from "../state/slices/counter-slice";
 
 const Counter = () => {
   const count = useSelector((state) => state.count);

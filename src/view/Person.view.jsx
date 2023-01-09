@@ -2,17 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { fetchRandomPerson } from "../state/actions/person.actions";
+import { fetchRandomPerson } from "../state/slices/person-slice";
 
 const PersonView = () => {
   const { data, is_loading, error_msg } = useSelector((state) => state.person);
-
   const dispatch = useDispatch();
 
   const get_random_Person = () => dispatch(fetchRandomPerson());
 
   if (is_loading) return <LoadTxt>Loading data...</LoadTxt>;
-  if (error_msg) return <h1>{error_msg}</h1>;
+  if (error_msg) return <>
+    <h1>{error_msg}</h1>
+    <Btn size="lg" onClick={get_random_Person}>
+      Fetch Person
+    </Btn>
+  </>
 
   if (Object.keys(data).length) {
     const {

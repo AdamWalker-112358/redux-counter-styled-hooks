@@ -1,13 +1,23 @@
-import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./reducers/root.reducer";
-import useLocalStorage from "./local-storage";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
 
-const previousState = JSON.parse(window.localStorage.getItem("state") || '{}');
-const middleware = composeWithDevTools(
-  applyMiddleware(useLocalStorage(), thunk)
-);
+import { configureStore } from "@reduxjs/toolkit";;
 
-const store = createStore(rootReducer, previousState, middleware);
+import setLocalStorage from "./local-storage";
+import personReducer from "./reducers/person.reducer";
+
+import colorSlice from './slices/color-slice'
+import counterSlice from "./slices/counter-slice";
+import personSlice from "./slices/person-slice";
+
+const preLoadedState = JSON.parse(window.localStorage.getItem("state") || '{}');
+
+const store = configureStore({
+  reducer: {
+    count: counterSlice,
+    person: personSlice,
+    color: colorSlice,
+  }, 
+  preloadedState: preLoadedState,
+  middleware: (getDefaultMiddleware)=> [...getDefaultMiddleware(), setLocalStorage]
+})
+
 export default store;

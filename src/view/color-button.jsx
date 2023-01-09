@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { setColor } from "../state/actions/color.actions";
+import { colorChanged } from "../state/slices/color-slice";
 
 const ColorButton = ({ color, children }) => {
   const dispatch = useDispatch();
   return (
     <Styles {...{ color, children }}>
-      <button className={color} onClick={() => dispatch(setColor(color))}>
+      <button className={color} onClick={() => dispatch(colorChanged(color))}>
         {children}
       </button>
     </Styles>
