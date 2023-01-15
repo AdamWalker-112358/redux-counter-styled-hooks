@@ -1,6 +1,6 @@
 
 import { configureStore } from "@reduxjs/toolkit";;
-import setLocalStorage from "./local-storage";
+import setLocalStorage from "./local-storage-middleware";
 
 import colorSlice from './slices/color-slice'
 import counterSlice from "./slices/counter-slice";
