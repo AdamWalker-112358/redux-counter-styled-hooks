@@ -1,8 +1,6 @@
 
 import { configureStore } from "@reduxjs/toolkit";;
-
 import setLocalStorage from "./local-storage";
-import personReducer from "./reducers/person.reducer";
 
 import colorSlice from './slices/color-slice'
 import counterSlice from "./slices/counter-slice";
